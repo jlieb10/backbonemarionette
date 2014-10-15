@@ -1,6 +1,11 @@
-MyApp = new Backbone.Marionette.Application();
+window.App = new Backbone.Marionette.Application();
 
-MyApp.addRegions({
+App.addRegions({
   content: "#content",
-  navigation: "#nav"
+  input: "#input"
+});
+
+App.on("start", function() {
+  App.Router = new MyRouter({controller: new MyController});
+  Backbone.history.start({pushState: true});
 });
